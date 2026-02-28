@@ -352,6 +352,7 @@ kind delete cluster --name kubevirt-lab
 
 ```
 kubevirt-tutorial/
+├── .gitignore                       # Git 忽略規則（二進位檔、編輯器暫存等）
 ├── README.md                        # 本文件（教學與專案說明）
 ├── kind-kubevirt.yaml               # Kind 叢集設定檔
 ├── kubevirt-workshop-checklist.md   # 完整工作清單（含所有測試檢查點）
