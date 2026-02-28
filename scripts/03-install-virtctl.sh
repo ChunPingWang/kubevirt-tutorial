@@ -17,7 +17,14 @@ chmod +x virtctl
 
 echo ""
 echo "=== 安裝 virtctl ==="
-sudo mv virtctl /usr/local/bin/
+if sudo -n true 2>/dev/null; then
+  sudo mv virtctl /usr/local/bin/
+else
+  echo "無 sudo 權限，安裝到 ~/.local/bin/"
+  mkdir -p ~/.local/bin
+  mv virtctl ~/.local/bin/
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 
 echo ""
 echo "=== 驗證安裝 ==="
