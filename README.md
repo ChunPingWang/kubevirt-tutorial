@@ -354,7 +354,27 @@ kind delete cluster --name kubevirt-lab
 kubevirt-tutorial/
 ├── README.md                        # 本文件（教學與專案說明）
 ├── kind-kubevirt.yaml               # Kind 叢集設定檔
-└── kubevirt-workshop-checklist.md   # 完整工作清單（含所有測試檢查點）
+├── kubevirt-workshop-checklist.md   # 完整工作清單（含所有測試檢查點）
+├── scripts/                         # 各階段獨立腳本
+│   ├── 00-check-prerequisites.sh    # 環境前置檢查
+│   ├── 01-create-kind-cluster.sh    # 建立 Kind 叢集
+│   ├── 02-install-kubevirt.sh       # 安裝 KubeVirt（含 useEmulation）
+│   ├── 03-install-virtctl.sh        # 安裝 virtctl CLI
+│   ├── 04-install-cdi.sh            # 安裝 CDI
+│   ├── 05-create-vm-containerdisk.sh # 建立 ContainerDisk VM
+│   ├── 06-vm-lifecycle.sh           # VM 生命週期操作
+│   ├── 07-import-datavolume.sh      # DataVolume 磁碟映像匯入
+│   ├── 08-create-vm-datavolume.sh   # 建立持久化 VM
+│   ├── 09-test-network.sh           # 網路功能驗證
+│   ├── 10-resource-limits.sh        # 資源限制測試
+│   └── 11-cleanup.sh               # 清理與銷毀
+└── manifests/                       # Kubernetes YAML 資源定義
+    ├── vm-containerdisk.yaml        # ContainerDisk VM
+    ├── datavolume-cirros.yaml       # Cirros DataVolume
+    ├── vm-datavolume.yaml           # 使用 DataVolume 的 VM
+    ├── service-vm-ssh.yaml          # VM SSH NodePort Service
+    ├── vm-snapshot.yaml             # VM Snapshot（需 CSI 支援）
+    └── vm-resource-demo.yaml        # 資源限制示範 VM
 ```
 
 ## 參考資源
